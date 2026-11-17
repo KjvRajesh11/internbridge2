@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 40" fill="none">
+  <style>
+    .brand-text {
+      fill: #080808;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+    }
+    @media (prefers-color-scheme: dark) {
+      .brand-text {
+        fill: #FFFFFF;
+      }
+    }
+  </style>
+  <!-- Brand Red Diamond (Equal-axis 45-degree rotated square) -->
+  <polygon points="16,8 28,20 16,32 4,20" fill="#E42316" />
+  
+  <!-- Wordmark: INTERN (Adaptive) + BRIDGE (#E42316) -->
+  <text x="36" y="27" font-size="22" font-weight="900" class="brand-text">
+    INTERN<tspan fill="#E42316">BRIDGE</tspan>
+  </text>
+</svg>
