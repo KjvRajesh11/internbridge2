@@ -1,0 +1,10 @@
+import { Router } from 'express';
+import { getApplications, getApplicationById, applyToInternship, updateApplicationStatus, } from '../controllers/applications.controller.js';
+import { requireAuth, requireRole } from '../middleware/auth.js';
+const router = Router();
+router.get('/', requireAuth, getApplications);
+router.get('/:id', requireAuth, getApplicationById);
+router.post('/', requireAuth, requireRole('student'), applyToInternship);
+router.post('/apply', requireAuth, requireRole('student'), applyToInternship);
+router.patch('/:id/status', requireAuth, requireRole('recruiter', 'admin'), updateApplicationStatus);
+export default router;

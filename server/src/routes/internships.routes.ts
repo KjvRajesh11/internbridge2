@@ -1,0 +1,20 @@
+import { Router } from 'express';
+import {
+  getInternships,
+  getInternshipById,
+  createInternship,
+  updateInternship,
+  deleteInternship,
+} from '../controllers/internships.controller.js';
+import { requireAuth, requireRole } from '../middleware/auth.js';
+
+const router = Router();
+
+router.get('/', getInternships);
+router.get('/:id', getInternshipById);
+router.post('/', requireAuth, requireRole('recruiter', 'admin'), createInternship);
+router.put('/:id', requireAuth, requireRole('recruiter', 'admin'), updateInternship);
+router.patch('/:id', requireAuth, requireRole('recruiter', 'admin'), updateInternship);
+router.delete('/:id', requireAuth, requireRole('recruiter', 'admin'), deleteInternship);
+
+export default router;

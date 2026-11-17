@@ -14,11 +14,13 @@
 </p>
 
 <p align="center">
-  <a href="https://nextjs.org/"><img src="https://img.shields.io/badge/Next.js-black?style=flat-square&logo=next.js" alt="Next.js" /></a>
-  <a href="https://react.dev/"><img src="https://img.shields.io/badge/React-black?style=flat-square&logo=react" alt="React" /></a>
+  <a href="https://mongodb.com/"><img src="https://img.shields.io/badge/MongoDB-black?style=flat-square&logo=mongodb" alt="MongoDB" /></a>
+  <a href="https://expressjs.com/"><img src="https://img.shields.io/badge/Express.js-black?style=flat-square&logo=express" alt="Express" /></a>
+  <a href="https://react.dev/"><img src="https://img.shields.io/badge/React_19-black?style=flat-square&logo=react" alt="React" /></a>
+  <a href="https://nodejs.org/"><img src="https://img.shields.io/badge/Node.js-black?style=flat-square&logo=node.js" alt="Node.js" /></a>
+  <a href="https://vitejs.dev/"><img src="https://img.shields.io/badge/Vite-black?style=flat-square&logo=vite" alt="Vite" /></a>
   <a href="https://www.typescriptlang.org/"><img src="https://img.shields.io/badge/TypeScript-black?style=flat-square&logo=typescript" alt="TypeScript" /></a>
-  <a href="https://tailwindcss.com/"><img src="https://img.shields.io/badge/Tailwind_CSS-black?style=flat-square&logo=tailwindcss" alt="Tailwind CSS" /></a>
-  <a href="https://supabase.com/"><img src="https://img.shields.io/badge/PostgreSQL-black?style=flat-square&logo=postgresql" alt="PostgreSQL" /></a>
+  <a href="https://tailwindcss.com/"><img src="https://img.shields.io/badge/Tailwind_CSS_v4-black?style=flat-square&logo=tailwindcss" alt="Tailwind CSS" /></a>
   <a href="https://vitest.dev/"><img src="https://img.shields.io/badge/Tests-9_Passing-E42316?style=flat-square" alt="Tests" /></a>
 </p>
 
@@ -379,7 +381,8 @@ internbridge/
 ## Installation & Local Development
 
 ### Prerequisites
-- **Node.js**: `v20.x` or later (tested on Node v20/v22)
+- **Node.js**: `v20.x` or later (tested on Node v20/v22/v25)
+- **MongoDB**: `v6.x` or later (or automatic in-memory fallback)
 - **npm**: `v10.x` or later
 - **Git**
 
@@ -391,24 +394,38 @@ internbridge/
    cd internbridge
    ```
 
-2. **Install dependencies**:
+2. **Install all dependencies**:
    ```bash
-   npm install
+   npm run build
+   ```
+   Or install inside `client` and `server`:
+   ```bash
+   cd server && npm install
+   cd ../client && npm install
    ```
 
 3. **Configure environment variables**:
    ```bash
-   cp .env.example .env.local
+   cp .env.example server/.env
    ```
-   *InternBridge runs out of the box in zero-config demo mode without external services. See [Dual Persistence Modes](#dual-persistence-modes).*
+   *InternBridge runs out of the box with an embedded MongoMemoryServer fallback if no local MongoDB instance is reachable at `127.0.0.1:27017`.*
 
-4. **Start the development server**:
+4. **Seed demo data**:
    ```bash
-   npm run dev
+   npm run seed
    ```
 
-5. **Open in browser**:  
-   Visit [http://localhost:3000](http://localhost:3000).
+5. **Start the development servers**:
+   ```bash
+   # In terminal 1 (Express backend on :5000):
+   npm run dev:server
+
+   # In terminal 2 (Vite React frontend on :5173):
+   npm run dev:client
+   ```
+
+6. **Open in browser**:  
+   Visit [http://localhost:5173](http://localhost:5173). Backend API running at [http://localhost:5000](http://localhost:5000).
 
 ### Environment Variables
 

@@ -1,0 +1,10 @@
+import { Response } from 'express';
+import { AuthenticatedRequest } from '../middleware/auth.js';
+export declare function getAgentsStatus(req: AuthenticatedRequest, res: Response): Promise<Response<any, Record<string, any>>>;
+export declare function getAgentRuns(req: AuthenticatedRequest, res: Response): Promise<Response<any, Record<string, any>>>;
+export declare function triggerHunter(req: AuthenticatedRequest, res: Response): Promise<Response<any, Record<string, any>>>;
+export declare function generatePersonalization(req: AuthenticatedRequest, res: Response): Promise<Response<any, Record<string, any>>>;
+export declare function runAutoApply(req: AuthenticatedRequest, res: Response): Promise<Response<any, Record<string, any>>>;
+export declare function validateGuard(req: AuthenticatedRequest, res: Response): Promise<Response<any, Record<string, any>>>;
+export declare function evaluateMockResponse(req: AuthenticatedRequest, res: Response): Promise<Response<any, Record<string, any>>>;
+export declare function generateFollowUp(req: AuthenticatedRequest, res: Response): Promise<Response<any, Record<string, any>>>;

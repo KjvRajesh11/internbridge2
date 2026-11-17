@@ -1,0 +1,31 @@
+import { Router } from 'express';
+import {
+  getAgentsStatus,
+  getAgentRuns,
+  triggerHunter,
+  generatePersonalization,
+  runAutoApply,
+  validateGuard,
+  evaluateMockResponse,
+  generateFollowUp,
+} from '../controllers/agents.controller.js';
+import { requireAuth } from '../middleware/auth.js';
+
+const router = Router();
+
+router.use(requireAuth);
+
+router.get('/status', getAgentsStatus);
+router.get('/runs', getAgentRuns);
+router.post('/hunter/discover', triggerHunter);
+router.post('/hunter', triggerHunter);
+router.post('/personalizer/generate', generatePersonalization);
+router.post('/personalize', generatePersonalization);
+router.post('/execution/auto-apply', runAutoApply);
+router.post('/auto-apply', runAutoApply);
+router.post('/guard/validate', validateGuard);
+router.post('/career-ops/evaluate-mock', evaluateMockResponse);
+router.post('/evaluate-mock', evaluateMockResponse);
+router.post('/career-ops/follow-up', generateFollowUp);
+
+export default router;
